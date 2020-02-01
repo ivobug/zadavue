@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    
+    <div id="app">
+        <div v-for="(value, i) in groceries">
+            <!-- 'id' i 'for' dodajemo kako bi klikom na ime namirnice event za odgovarajuci checkbox takoder bio registriran -->
+            <!-- na event pozivamo funckiju i prosljedujemo redni broj namirnice u listi -->
+            <input type="checkbox" v-bind:id="value.name"  @click="addGro(i)" :disabled="value.inBasket">
+            <label v-bind:for="value.name" v-bind:class="{chDi: value.inBasket}">{{value.name}}</label>
+        </div>
+
+
+        <br>
+        <!-- button resetira cijelu stranicu  -->
+        <button v-show="valid" @click="document.location.reload()">Reset</button>
+
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="main.js"></script>
+</body>
+</html>
